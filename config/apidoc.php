@@ -14,6 +14,8 @@ return [
      */
     'router' => 'laravel',
 
+    'publicPath' => "public/docs",
+
     /*
      * The base URL to be used in examples and the Postman collection.
      * By default, this will be the value of config('app.url').
@@ -197,7 +199,7 @@ return [
      * If you want to use this, please be aware of the following rules:
      * - the image size must be 230 x 52
      */
-    'logo' => false,
+    'logo' => true,
 
     /*
      * Name for the group of routes which do not have a @group set.
@@ -215,6 +217,7 @@ return [
     'example_languages' => [
         'bash',
         'javascript',
+        'php'
     ],
 
     /*

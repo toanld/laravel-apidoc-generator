@@ -24,6 +24,7 @@ class Writer
      * @var string
      */
     private $baseUrl;
+    private $publicPath;
 
     /**
      * @var bool
@@ -60,6 +61,7 @@ class Writer
         // If no config is injected, pull from global
         $this->config = $config ?: new DocumentationConfig(config('apidoc'));
         $this->baseUrl = $this->config->get('base_url') ?? config('app.url');
+        $this->publicPath = $this->config->get('publicPath') ?? "public/docs";
         $this->forceIt = $forceIt;
         $this->output = $output;
         $this->shouldGeneratePostmanCollection = $this->config->get('postman.enabled', false);
@@ -248,7 +250,7 @@ class Writer
 
     protected function copyAssetsFromSourceFolderToPublicFolder(): void
     {
-        $publicPath = 'public/docs';
+        $publicPath = $this->publicPath;
         if (! is_dir($publicPath)) {
             mkdir($publicPath, 0777, true);
             mkdir("{$publicPath}/css");
